@@ -16,12 +16,15 @@
 
                     <div class="mt-4 flex items-center">
 
-                        @can('manage-product', $product)
-                        <a href="{{ route('products.edit', $product) }}"
-                            class="text-blue-600 underline">
+                        {{-- Modification via Policy --}}
+                        @can('update', $product)
+                        <a href="{{ route('products.edit', $product) }}" class="text-blue-600 underline">
                             Modifier le produit
                         </a>
+                        @endcan
 
+                        {{-- Suppression via Policy --}}
+                        @can('delete', $product)
                         <form action="{{ route('products.destroy', $product) }}" method="POST" class="inline ms-4">
                             @csrf
                             @method('DELETE')
