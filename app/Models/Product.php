@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Product extends Model
 {
     use HasFactory;
-    
+
     protected $fillable = ['name', 'price', 'is_public', 'user_id'];
 
     public function user()
