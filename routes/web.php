@@ -10,7 +10,7 @@ Route::get('/', function () {
 
 Route::get('/dashboard', function () {
     return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+})->middleware(['auth', 'verified', 'role:admin'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -20,4 +20,4 @@ Route::middleware('auth')->group(function () {
 
 Route::resource('products', ProductController::class)->middleware('auth');
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
